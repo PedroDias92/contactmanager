@@ -51,11 +51,13 @@ export default class AddContact extends Component {
       phone: "",
       errors: {}
     });
+
+    this.props.history.push("/");
   };
 
   render() {
     const { name, email, phone, errors } = this.state;
-    console.log("addContact", { errors }, { name });
+    //console.log("addContact", { errors }, { name });
     return (
       <Consumer>
         {value => {
