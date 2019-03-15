@@ -28,7 +28,7 @@ export class Provider extends Component {
     dispatch: action => this.setState(state => reducer(state, action))
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     /* fetch("https://jsonplaceholder.typicode.com/users/")
       .then(response => response.json())
       .then(data => {
@@ -37,11 +37,9 @@ export class Provider extends Component {
           contacts: data
         });
       }); */
-    axios.get("https://jsonplaceholder.typicode.com/users/").then(res =>
-      this.setState({
-        contacts: res.data
-      })
-    );
+    const res = await axios.get("https://jsonplaceholder.typicode.com/users/");
+
+    this.setState({ contacts: res.data });
   }
 
   render() {
